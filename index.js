@@ -107,10 +107,11 @@ app.get("/api", async (req, res) => {
       });
     });
 
-    await browser.close();
+    
 
     res.json(text);
     console.log("fetching completed");
+    await browser.close();
   } catch (err) {
     console.error(err);
     return null;
@@ -208,6 +209,7 @@ app.get("/api/drives", async (req, res) => {
 
     res.json(text);
     console.log("fetching completed");
+    await browser.close();
   } catch (err) {
     console.error(err);
     return null;
