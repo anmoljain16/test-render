@@ -80,7 +80,7 @@ app.get("/api", async (req, res) => {
           }
         });
 
-        if (tds.length >= 8) {
+        if (tds.length >= 8 && tds[3].innerText.trim() !== "") {
           return {
             driveCode: tds[0].innerText,
             driveDate: tds[1].innerText,
@@ -106,9 +106,9 @@ app.get("/api", async (req, res) => {
         }
       });
     });
+    text = text.filter((entry) => entry.Company.trim() !== "");
 
     
-
     res.json(text);
     console.log("fetching completed");
     await browser.close();
@@ -180,7 +180,7 @@ app.get("/api/drives", async (req, res) => {
           }
         });
 
-        if (tds.length >= 8) {
+        if (tds.length >= 8 && tds[3].innerText.trim() !== "") {
           return {
             driveCode: tds[0].innerText,
             driveDate: tds[1].innerText,
@@ -206,7 +206,7 @@ app.get("/api/drives", async (req, res) => {
         }
       });
     });
-
+    text = text.filter((entry) => entry.Company.trim() !== "");
     res.json(text);
     console.log("fetching completed");
     await browser.close();
