@@ -67,6 +67,7 @@ app.get("/api", async (req, res) => {
     console.log("Logged in successfully");
 
     await page.goto("https://ums.lpu.in/Placements/frmPlacementDriveRegistration.aspx");
+    await page.waitForSelector("#ctl00_ContentPlaceHolder1_gdvPlacement tr td");
 
     let text = await page.evaluate(() => {
       return Array.from(document.querySelectorAll("#ctl00_ContentPlaceHolder1_gdvPlacement tr"), (e) => {
@@ -167,6 +168,7 @@ app.get("/api/drives", async (req, res) => {
 
   try {
     await page.goto("https://ums.lpu.in/Placements/frmPlacementDriveRegistration.aspx");
+    await page.waitForSelector("#ctl00_ContentPlaceHolder1_gdvPlacement tr td");
 
     let text = await page.evaluate(() => {
       return Array.from(document.querySelectorAll("#ctl00_ContentPlaceHolder1_gdvPlacement tr"), (e) => {
